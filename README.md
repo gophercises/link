@@ -51,7 +51,7 @@ You can ignore any links nested inside of another link. Eg with following HTML:
 </a>
 ```
 
-It is okay if your code returns only the outside link, but it should still get all of the text inside the link, including the text inside the nested link.
+It is okay if your code returns only the outside link.
 
 **3. Get something working before focusing on edge-cases**
 
@@ -60,6 +60,13 @@ Don't worry about having perfect code. Chances are there will be a lot of edge c
 **4. A few HTML examples have been provided**
 
 I created a few simpler HTML files and included them in this repo to help with testing. They won't cover all potential use cases, but should help you start testing out your code.
+
+
+**5. The fourth example will help you remove comments from your link text**
+
+Chances are your first version will include the text from comments inside a link tag. Mine did. Use [ex4.html](ex4.html) to test that case out and fix the bug.
+
+*Hint: See [NodeType](https://godoc.org/golang.org/x/net/html#NodeType) constants and look for the types that you can ignore.*
 
 ## Bonus
 
