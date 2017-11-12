@@ -68,6 +68,13 @@ Chances are your first version will include the text from comments inside a link
 
 *Hint: See [NodeType](https://godoc.org/golang.org/x/net/html#NodeType) constants and look for the types that you can ignore.*
 
+
+## External Resources
+
+In the solution for this exercise I end up using a DFS, which is a graph theory algorithm. If you want to learn a little more about that, I have discussed it on YouTube here - <https://www.youtube.com/watch?v=zboCGDMnU3I>
+
+There is a complete series on algorithms and graph theory, though at this time it is somewhat incomplete. I never have enough time in the day 🙁. Hopefully one day *Let's Learn Algorithms* will be its own series like *Gophercises*.
+
 ## Bonus
 
 The only bonuses here are to improve your tests and edge-case coverage.
