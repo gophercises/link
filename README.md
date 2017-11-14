@@ -5,8 +5,8 @@
 [![topic: recursive-funcs](https://img.shields.io/badge/topic-recursive%20funcs-green.svg?style=flat-square)](https://github.com/search?q=topic%3Arecursive-funcs+org%3Agophercises&type=Repositories)
 [![topic: testing](https://img.shields.io/badge/topic-testing-green.svg?style=flat-square)](https://github.com/search?q=topic%3Atesting+org%3Agophercises&type=Repositories)
 
-![video status: unreleased](https://img.shields.io/badge/video%20status-unreleased-red.svg?style=flat-square)
-![code status: unreleased](https://img.shields.io/badge/code%20status-unreleased-red.svg?style=flat-square)
+[![video status: released](https://img.shields.io/badge/video%20status-unreleased-red.svg?style=flat-square)](https://gophercises.com/exericses/link)
+[![code status: released](https://img.shields.io/badge/code%20status-unreleased-red.svg?style=flat-square)](https://github.com/gophercises/link/tree/solution)
 
 ## Exercise details
 
