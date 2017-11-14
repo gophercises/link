@@ -1,10 +1,5 @@
 # Exercise #4: HTML Link Parser
 
-[![topic: html-parsing](https://img.shields.io/badge/topic-html%20parsing-blue.svg?style=flat-square)](https://github.com/search?q=topic%3Ahtml-parsing+org%3Agophercises&type=Repositories)
-[![topic: io-pkg](https://img.shields.io/badge/topic-io%20pkg-blue.svg?style=flat-square)](https://github.com/search?q=topic%3Aio-pkg+org%3Agophercises&type=Repositories)
-[![topic: recursive-funcs](https://img.shields.io/badge/topic-recursive%20funcs-blue.svg?style=flat-square)](https://github.com/search?q=topic%3Arecursive-funcs+org%3Agophercises&type=Repositories)
-[![topic: testing](https://img.shields.io/badge/topic-testing-blue.svg?style=flat-square)](https://github.com/search?q=topic%3Atesting+org%3Agophercises&type=Repositories)
-
 [![video status: released](https://img.shields.io/badge/video%20status-released-green.svg?style=flat-square)](https://gophercises.com/exericses/link)
 [![code status: released](https://img.shields.io/badge/code%20status-released-green.svg?style=flat-square)](https://github.com/gophercises/link/tree/solution)
 
