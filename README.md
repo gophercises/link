@@ -1,7 +1,6 @@
 # Exercise #4: HTML Link Parser
 
-[![video status: released](https://img.shields.io/badge/video%20status-released-green.svg?style=flat-square)](https://gophercises.com/exericses/link)
-[![code status: released](https://img.shields.io/badge/code%20status-released-green.svg?style=flat-square)](https://github.com/gophercises/link/tree/solution)
+[![exercise status: released](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](https://gophercises.com/exercises/link) <!--[![demo: ->](https://img.shields.io/badge/demo-%E2%86%92-yellow.svg?style=for-the-badge)](https://gophercises.com/demos/cyoa/)-->
 
 ## Exercise details
 
