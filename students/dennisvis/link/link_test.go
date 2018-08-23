@@ -1,4 +1,4 @@
-package main
+package link
 
 import (
 	"fmt"
@@ -115,7 +115,7 @@ func Test_TraverseText_WhenGivenMultipleDeeplyNestedTexts_ShouldReturnCombinedTe
 }
 
 func Test_NodeToAnchor_WhenGivenPlainTextNode_ShouldReturnAnchor(t *testing.T) {
-	expected := anchor{"", "I am but text"}
+	expected := Anchor{"", "I am but text"}
 	node := createNode(expected.Text)
 
 	result := nodeToAnchor(node)
@@ -126,7 +126,7 @@ func Test_NodeToAnchor_WhenGivenPlainTextNode_ShouldReturnAnchor(t *testing.T) {
 }
 
 func Test_NodeToAnchor_WhenGivenAnchorNode_ShouldReturnAnchor(t *testing.T) {
-	expected := anchor{"/i-will-only-lead-you-astray", "I am but text"}
+	expected := Anchor{"/i-will-only-lead-you-astray", "I am but text"}
 	node := createAnchorNode(expected.Href, expected.Text)
 
 	result := nodeToAnchor(node)
@@ -136,7 +136,7 @@ func Test_NodeToAnchor_WhenGivenAnchorNode_ShouldReturnAnchor(t *testing.T) {
 	}
 }
 
-func traverseAnchorsTest(t *testing.T, exNr int8, expected []anchor) {
+func traverseAnchorsTest(t *testing.T, exNr int8, expected []Anchor) {
 	f, err := os.Open(fmt.Sprintf("../../ex%d.html", exNr))
 	if err != nil {
 		panic(err)
@@ -146,7 +146,7 @@ func traverseAnchorsTest(t *testing.T, exNr int8, expected []anchor) {
 		panic(err)
 	}
 
-	result := traverseAnchors(node, make([]anchor, 0))
+	result := traverseAnchors(node, make([]Anchor, 0))
 
 	if len(result) != len(expected) {
 		t.Errorf("Expected result to have length of %d, was %d", len(expected), len(result))
@@ -159,25 +159,25 @@ func traverseAnchorsTest(t *testing.T, exNr int8, expected []anchor) {
 }
 
 func Test_TraverseAnchors_WhenGivenEx1_ShouldReturnAllAnchors(t *testing.T) {
-	expected := make([]anchor, 1)
-	expected[0] = anchor{"/other-page", "A link to another page"}
+	expected := make([]Anchor, 1)
+	expected[0] = Anchor{"/other-page", "A link to another page"}
 
 	traverseAnchorsTest(t, 1, expected)
 }
 
 func Test_TraverseAnchors_WhenGivenEx2_ShouldReturnAllAnchors(t *testing.T) {
-	expected := make([]anchor, 2)
-	expected[0] = anchor{"https://www.twitter.com/joncalhoun", "Check me out on twitter"}
-	expected[1] = anchor{"https://github.com/gophercises", "Gophercises is on Github !"}
+	expected := make([]Anchor, 2)
+	expected[0] = Anchor{"https://www.twitter.com/joncalhoun", "Check me out on twitter"}
+	expected[1] = Anchor{"https://github.com/gophercises", "Gophercises is on Github !"}
 
 	traverseAnchorsTest(t, 2, expected)
 }
 
 func Test_TraverseAnchors_WhenGivenEx3_ShouldReturnAllAnchors(t *testing.T) {
-	expected := make([]anchor, 3)
-	expected[0] = anchor{"#", "Login"}
-	expected[1] = anchor{"/lost", "Lost? Need help?"}
-	expected[2] = anchor{"https://twitter.com/marcusolsson", "@marcusolsson"}
+	expected := make([]Anchor, 3)
+	expected[0] = Anchor{"#", "Login"}
+	expected[1] = Anchor{"/lost", "Lost? Need help?"}
+	expected[2] = Anchor{"https://twitter.com/marcusolsson", "@marcusolsson"}
 
 	traverseAnchorsTest(t, 3, expected)
 }
