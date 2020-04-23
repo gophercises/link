@@ -1,4 +1,4 @@
-# Exercise #4: Analizador de enlaces HTML
+# Ejercicio #4: Analizador de enlaces HTML
 
 [![exercise status: released](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](https://gophercises.com/exercises/link)
 
