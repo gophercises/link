@@ -2,11 +2,11 @@
 
 [![exercise status: released](https://img.shields.io/badge/exercise%20status-released-green.svg?style=for-the-badge)](https://gophercises.com/exercises/link)
 
-## Exercise details
+## Detalles del ejercicio
 
-In this exercise your goal is create a package that makes it easy to parse an HTML file and extract all of the links (`<a href="">...</a>` tags). For each extracted link you should return a data structure that includes both the `href`, as well as the text inside the link. Any HTML inside of the link can be stripped out, along with any extra whitespace including newlines, back-to-back spaces, etc.
+En este ejercicio, su objetivo es crear un paquete que facilite analizar un archivo HTML y extraer todos los enlaces (`<a href="">...</a>` tags). Para cada enlace extraído, debe devolver una estructura de datos que incluya tanto el `href` como el texto dentro del enlace. Cualquier HTML dentro del enlace se puede eliminar, junto con cualquier espacio en blanco adicional, incluidas las nuevas líneas, los espacios consecutivos, etc.
 
-Links will be nested in different HTML elements, and it is very possible that you will have to deal with HTML similar to code below.
+Los enlaces estarán anidados en diferentes elementos HTML, y es muy posible que tenga que lidiar con HTML similar al código a continuación.
 
 ```html
 <a href="/dog">
@@ -16,7 +16,7 @@ Links will be nested in different HTML elements, and it is very possible that yo
 </a>
 ```
 
-In situations like these we want to get output that looks roughly like:
+En situaciones como estas, queremos obtener resultados que se vean más o menos así:
 
 ```go
 Link{
@@ -25,19 +25,19 @@ Link{
 }
 ```
 
-Once you have a working program, try to write some tests for it to practice using the testing package in go.
+Una vez que tenga un programa en funcionamiento, intente escribir algunas pruebas para que practique el uso del paquete de prueba en marcha.
 
 
-### Notes
+### Notas
 
 **1. Use the x/net/html package**
 
-I recommend checking out the [x/net/html](https://godoc.org/golang.org/x/net/html) package for this task, which you will need to `go get`. It is provided by the Go team, but isn't included in the standard library. This makes it a little easier to parse HTML files.
+Recomiendo revisar el  [x/net/html](https://godoc.org/golang.org/x/net/html) paquete para esta tarea, que necesitará 'go get'. Es proporcionado por el equipo de Go, pero no está incluido en la biblioteca estándar. Esto hace que sea un poco más fácil analizar archivos HTML.
 
 
 **2. Ignore nested links**
 
-You can ignore any links nested inside of another link. Eg with following HTML:
+Puede ignorar cualquier enlace anidado dentro de otro enlace. Por ejemplo, con el siguiente HTML:
 
 ```html
 <a href="#">
@@ -45,30 +45,28 @@ You can ignore any links nested inside of another link. Eg with following HTML:
 </a>
 ```
 
-It is okay if your code returns only the outside link.
+Está bien si su código devuelve solo el enlace externo.
 
 **3. Get something working before focusing on edge-cases**
 
-Don't worry about having perfect code. Chances are there will be a lot of edge cases here that will be kinda tricky to handle. Just try to cover the most basic use cases first and then improve on that.
+No te preocupes por tener un código perfecto. Es probable que haya muchos casos extremos aquí que serán un poco difíciles de manejar. Solo trate de cubrir los casos de uso más básicos primero y luego mejore eso.
 
 **4. A few HTML examples have been provided**
 
-I created a few simpler HTML files and included them in this repo to help with testing. They won't cover all potential use cases, but should help you start testing out your code.
+Creé algunos archivos HTML más simples y los incluí en este repositorio para ayudar con las pruebas. No cubrirán todos los casos de uso potenciales, pero deberían ayudarlo a comenzar a probar su código.
 
 
 **5. The fourth example will help you remove comments from your link text**
 
-Chances are your first version will include the text from comments inside a link tag. Mine did. Use [ex4.html](ex4.html) to test that case out and fix the bug.
-
+Es probable que su primera versión incluya el texto de los comentarios dentro de una etiqueta de enlace. El mío lo hizo. Use [ex4.html](ex4.html) para probar ese caso y corregir el error.
 *Hint: See [NodeType](https://godoc.org/golang.org/x/net/html#NodeType) constants and look for the types that you can ignore.*
 
 
-## External Resources
+## Recursos externos
 
-In the solution for this exercise I end up using a DFS, which is a graph theory algorithm. If you want to learn a little more about that, I have discussed it on YouTube here - <https://www.youtube.com/watch?v=zboCGDMnU3I>
-
-There is a complete series on algorithms and graph theory, though at this time it is somewhat incomplete. I never have enough time in the day 🙁. Hopefully one day *Let's Learn Algorithms* will be its own series like *Gophercises*.
+En la solución para este ejercicio termino usando un DFS, que es un algoritmo de teoría de grafos. Si quieres aprender un poco más sobre eso, lo he discutido en YouTube aquí:- <https://www.youtube.com/watch?v=zboCGDMnU3I>
+Existe una serie completa sobre algoritmos y teoría de grafos, aunque en este momento es algo incompleta. Nunca tengo suficiente tiempo en el día 🙁. Ojalá un día y *Aprendamos Algoritmos* será su propia serie como *Gophercises*.
 
 ## Bonus
 
-The only bonuses here are to improve your tests and edge-case coverage.
+Los únicos bonos aquí son mejorar sus pruebas y la cobertura de casos límite.
