@@ -30,12 +30,12 @@ Una vez que tenga un programa en funcionamiento, intente escribir algunas prueba
 
 ### Notas
 
-**1. Use the x/net/html package**
+**1. Use el paquete x/net/html **
 
 Recomiendo revisar el  [x/net/html](https://godoc.org/golang.org/x/net/html) paquete para esta tarea, que necesitará 'go get'. Es proporcionado por el equipo de Go, pero no está incluido en la biblioteca estándar. Esto hace que sea un poco más fácil analizar archivos HTML.
 
 
-**2. Ignore nested links**
+**2. Ignore los enlaces anidados**
 
 Puede ignorar cualquier enlace anidado dentro de otro enlace. Por ejemplo, con el siguiente HTML:
 
@@ -47,16 +47,16 @@ Puede ignorar cualquier enlace anidado dentro de otro enlace. Por ejemplo, con e
 
 Está bien si su código devuelve solo el enlace externo.
 
-**3. Get something working before focusing on edge-cases**
+**3. hacer que algo funcione antes de enfocarse en casos extremos**
 
 No te preocupes por tener un código perfecto. Es probable que haya muchos casos extremos aquí que serán un poco difíciles de manejar. Solo trate de cubrir los casos de uso más básicos primero y luego mejore eso.
 
-**4. A few HTML examples have been provided**
+**4. Se han proporcionado algunos ejemplos HTML.**
 
 Creé algunos archivos HTML más simples y los incluí en este repositorio para ayudar con las pruebas. No cubrirán todos los casos de uso potenciales, pero deberían ayudarlo a comenzar a probar su código.
 
 
-**5. The fourth example will help you remove comments from your link text**
+**5. El cuarto ejemplo lo ayudará a eliminar comentarios de su texto de enlace**
 
 Es probable que su primera versión incluya el texto de los comentarios dentro de una etiqueta de enlace. El mío lo hizo. Use [ex4.html](ex4.html) para probar ese caso y corregir el error.
 *Hint: See [NodeType](https://godoc.org/golang.org/x/net/html#NodeType) constants and look for the types that you can ignore.*
