@@ -7,7 +7,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/fenriz07/link/helpers"
+	"github.com/fenriz07/cyoa/students/fenriz/helpers"
 	"golang.org/x/net/html"
 )
 
@@ -20,11 +20,13 @@ func main() {
 
 	html := getHtml()
 
-	parseHtml(html)
+	links := ParseHtml(html)
+
+	helpers.DD(links)
 
 }
 
-func parseHtml(htmlstring string) {
+func ParseHtml(htmlstring string) *[]Link {
 
 	doc, err := html.Parse(strings.NewReader(htmlstring))
 
@@ -36,7 +38,7 @@ func parseHtml(htmlstring string) {
 
 	anchor := analyzeNode(doc, &links)
 
-	helpers.DD(anchor)
+	return anchor
 
 }
 
@@ -49,6 +51,8 @@ func getHref(attr []html.Attribute) (string, error) {
 		if a.Key == "href" {
 			return a.Val, nil
 		}
+
+		return "noneinhref", nil
 	}
 
 	return "", errors.New("No se encontro el href")
