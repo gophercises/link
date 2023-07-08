@@ -17,7 +17,7 @@ type Parser struct {
 }
 
 func NewParser(pagePath string) (*Parser, error) {
-	f, err := os.OpenFile(pagePath, os.O_RDWR|os.O_CREATE, 0755)
+	f, err := os.OpenFile(pagePath, os.O_RDONLY, 0755)
 	if err != nil {
 		log.Println("error reading html file")
 		return nil, err
