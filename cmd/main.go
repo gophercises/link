@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	pagePath := "ex4.html"
+	pagePath := "index.html"
 	parser, err := link.NewParser(pagePath)
 	if err != nil {
 		log.Fatal(err)
