@@ -1,12 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/mishankoGO/link/internal/link"
 	"log"
 )
 
 func main() {
-	pagePath := "ex2.html"
+	pagePath := "ex4.html"
 	parser, err := link.NewParser(pagePath)
 	if err != nil {
 		log.Fatal(err)
@@ -17,5 +18,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	parser.PrintDoc(doc)
+	var links []link.Link
+	parser.ExtractLinks(doc, &links)
+	if len(links) != 0 {
+		fmt.Println(links)
+	}
 }

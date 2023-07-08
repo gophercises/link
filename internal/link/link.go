@@ -1,12 +1,16 @@
 package link
 
 import (
-	"fmt"
 	"golang.org/x/net/html"
 	"log"
 	"os"
 	"strings"
 )
+
+type Link struct {
+	Url  string
+	Text string
+}
 
 type Parser struct {
 	Page *os.File
@@ -30,26 +34,27 @@ func (p *Parser) Parse() (*html.Node, error) {
 	return doc, nil
 }
 
-func (p *Parser) PrintDoc(doc *html.Node) {
-	var f func(*html.Node)
-	f = func(n *html.Node) {
-		//fmt.Println(n.Type, n.Data, n.NextSibling)
-		//if n.PrevSibling != nil && n.PrevSibling.Data == "a" {
-		//	fmt.Println(n.Data)
-		//}
-		if n.Type == html.ElementNode && n.Data == "a" {
-			for _, a := range n.Attr {
-				//fmt.Println(a.Val, a.Namespace, a.Key)
-				if a.Key == "href" {
-					fmt.Println(strings.Trim(n.FirstChild.Data, "\n "))
-					fmt.Println(a.Val)
-					break
+func (p *Parser) ExtractLinks(doc *html.Node, links *[]Link) {
+	traverseDoc(doc, links)
+}
+
+func traverseDoc(n *html.Node, links *[]Link) {
+	if n.Type == html.ElementNode && n.Data == "a" {
+		for _, a := range n.Attr {
+			if a.Key == "href" {
+				text := strings.Trim(n.FirstChild.Data, "\n ")
+				if n.FirstChild.NextSibling != nil {
+					if n.FirstChild.NextSibling.FirstChild != nil {
+						//fmt.Println(n.FirstChild.NextSibling.FirstChild.Data)
+						text += " " + strings.Trim(n.FirstChild.NextSibling.FirstChild.Data, "\n ")
+					}
 				}
+				url := a.Val
+				*links = append(*links, Link{Url: url, Text: text})
 			}
 		}
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			f(c)
-		}
 	}
-	f(doc)
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		traverseDoc(c, links)
+	}
 }
