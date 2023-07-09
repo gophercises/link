@@ -25,7 +25,7 @@ func NewParser(pagePath string) (*Parser, error) {
 	return &Parser{Page: f}, nil
 }
 
-func (p *Parser) Parse() (*html.Node, error) {
+func (p *Parser) parse() (*html.Node, error) {
 	doc, err := html.Parse(p.Page)
 	if err != nil {
 		log.Println("error parsing page in Parse()")
@@ -34,27 +34,58 @@ func (p *Parser) Parse() (*html.Node, error) {
 	return doc, nil
 }
 
-func (p *Parser) ExtractLinks(doc *html.Node, links *[]Link) {
-	traverseDoc(doc, links)
+func (p *Parser) ExtractLinks() ([]Link, error) {
+	doc, err := p.parse()
+	if err != nil {
+		return nil, err
+	}
+	// 1. Find <a> nodes in doc
+	// 2. for each link node...
+	//	2a. build a link
+	// 3. return the links
+	nodes := linkNodes(doc)
+	var links []Link
+	for _, node := range nodes {
+		links = append(links, buildLink(node))
+	}
+	return links, nil
 }
 
-func traverseDoc(n *html.Node, links *[]Link) {
-	if n.Type == html.ElementNode && n.Data == "a" {
-		for _, a := range n.Attr {
-			if a.Key == "href" {
-				text := strings.Trim(n.FirstChild.Data, "\n ")
-				if n.FirstChild.NextSibling != nil {
-					if n.FirstChild.NextSibling.FirstChild != nil {
-						//fmt.Println(n.FirstChild.NextSibling.FirstChild.Data)
-						text += " " + strings.Trim(n.FirstChild.NextSibling.FirstChild.Data, "\n ")
-					}
-				}
-				url := a.Val
-				*links = append(*links, Link{Url: url, Text: text})
-			}
+func buildLink(n *html.Node) Link {
+	var ret Link
+	for _, attr := range n.Attr {
+		if attr.Key == "href" {
+			ret.Url = attr.Val
+			break
 		}
 	}
-	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		traverseDoc(c, links)
+	ret.Text = text(n)
+	return ret
+}
+
+func text(n *html.Node) string {
+	if n.Type == html.TextNode {
+		return n.Data
 	}
+	if n.Type != html.ElementNode {
+		return ""
+	}
+
+	var ret string
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		ret += text(c) + " "
+	}
+	return strings.Join(strings.Fields(ret), " ")
+}
+
+func linkNodes(n *html.Node) []*html.Node {
+	if n.Type == html.ElementNode && n.Data == "a" {
+		return []*html.Node{n}
+	}
+
+	var ret []*html.Node
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		ret = append(ret, linkNodes(c)...)
+	}
+	return ret
 }

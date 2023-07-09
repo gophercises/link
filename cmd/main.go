@@ -7,20 +7,17 @@ import (
 )
 
 func main() {
-	pagePath := "index.html"
+	pagePath := "ex3.html"
 	parser, err := link.NewParser(pagePath)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	doc, err := parser.Parse()
+	extractLinks, err := parser.ExtractLinks()
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	var links []link.Link
-	parser.ExtractLinks(doc, &links)
-	if len(links) != 0 {
-		fmt.Println(links)
+	if len(extractLinks) != 0 {
+		fmt.Println(extractLinks)
 	}
 }
